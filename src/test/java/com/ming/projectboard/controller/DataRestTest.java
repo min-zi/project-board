@@ -1,5 +1,6 @@
 package com.ming.projectboard.controller;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@Disabled("Spring Data REST 통합테스트는 불필요하므로 제외시킴") // ignore 처리시킴
 @DisplayName("Data REST - API 테스트")
 @Transactional // 테스트 로그에 hibernate 의 쿼리가 나오고 db에 영향을 줘서 붙여줌
 // 이렇게 해주면 이 테스트에서 동작하는 각각의 유닛 테스트들은 기본적으로 rollback 상태로 트랜잭션이 묶임
