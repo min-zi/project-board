@@ -30,8 +30,9 @@ public class ArticleComment extends AuditingFields {
     }
 
     private ArticleComment(Article article, UserAccount userAccount, String content) {
-        this.userAccount = userAccount;
+
         this.article = article;
+        this.userAccount = userAccount;
         this.content = content;
     }
 
