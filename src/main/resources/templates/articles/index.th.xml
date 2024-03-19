@@ -13,7 +13,6 @@
             </attr>
         </attr>
     </attr>
-
     <attr sel="#pagination">
         <attr sel="li[0]/a"
               th:text="'previous'"

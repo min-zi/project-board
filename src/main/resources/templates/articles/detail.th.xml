@@ -18,7 +18,6 @@
                 <attr sel="div/p" th:text="${articleComment.content}" />
             </attr>
         </attr>
-
         <attr sel="#pagination">
             <attr sel="ul">
                 <attr sel="li[0]/a"

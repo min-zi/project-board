@@ -39,6 +39,7 @@ class ArticleControllerTest {
     @MockBean private ArticleService articleService;
     @MockBean private PaginationService paginationService;
 
+
     public ArticleControllerTest(@Autowired MockMvc mvc) { // 테스트 패키지 안에서는 @Autowired 를 직접 명시해줘야 함
         this.mvc = mvc;
     }
