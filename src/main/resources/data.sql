@@ -3,6 +3,9 @@
 insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by) values
     ('ming', 'qwer1234', 'ming', 'ming@mail.com', 'I am ming.', now(), 'ming', now(), 'ming')
 ;
+insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by) values
+    ('ming2', 'qwer1234', 'ming2', 'ming2@mail.com', 'I am ming2.', now(), 'ming2', now(), 'ming2')
+;
 
 -- 게시글 123
 insert into article (user_account_id, title, content, hashtag, created_by, modified_by, created_at, modified_at) values (1, 'Nulla justo.', 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', 'Turquoise', 'Esme', 'Almira', '2023-07-28 13:08:34', '2023-03-05 12:34:12');
