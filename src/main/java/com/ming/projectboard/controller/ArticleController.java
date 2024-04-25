@@ -2,8 +2,10 @@ package com.ming.projectboard.controller;
 
 import com.ming.projectboard.domain.type.SearchType;
 import com.ming.projectboard.dto.response.ArticleResponse;
+import com.ming.projectboard.dto.response.ArticleWithCommentResponse;
 import com.ming.projectboard.service.ArticleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ArticleController {
 
     private final ArticleService articleService;
+
     @GetMapping
     public String articles(
             @RequestParam(required = false) SearchType searchType,
@@ -27,6 +30,7 @@ public class ArticleController {
             @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable,
             ModelMap map
     ) {
+
         map.addAttribute("articles", articleService.searchArticles(searchType, searchValue, pageable).map(ArticleResponse::from));
         return "articles/index";
     }
@@ -39,4 +43,5 @@ public class ArticleController {
 
         return "articles/detail";
     }
+
 }
