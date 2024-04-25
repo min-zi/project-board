@@ -2,7 +2,7 @@ package com.ming.projectboard.controller;
 
 import com.ming.projectboard.domain.type.SearchType;
 import com.ming.projectboard.dto.response.ArticleResponse;
-import com.ming.projectboard.dto.response.ArticleWithCommentResponse;
+import com.ming.projectboard.dto.response.ArticleWithCommentsResponse;
 import com.ming.projectboard.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
