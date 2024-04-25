@@ -4,9 +4,7 @@ import com.ming.projectboard.domain.type.SearchType;
 import com.ming.projectboard.dto.response.ArticleResponse;
 import com.ming.projectboard.dto.response.ArticleWithCommentResponse;
 import com.ming.projectboard.service.ArticleService;
-import com.ming.projectboard.service.PaginationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -18,15 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-import java.util.List;
-
 @RequiredArgsConstructor
 @RequestMapping("/articles")
 @Controller
 public class ArticleController {
 
     private final ArticleService articleService;
-    private final PaginationService paginationService;
 
     @GetMapping
     public String articles(
@@ -35,23 +30,16 @@ public class ArticleController {
             @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable,
             ModelMap map
     ) {
-      
-        Page<ArticleResponse> articles = articleService.searchArticles(searchType, searchValue, pageable).map(ArticleResponse::from);
-        List<Integer> barNumbers = paginationService.getPaginationBarNumbers(pageable.getPageNumber(), articles.getTotalPages());
 
-        map.addAttribute("articles", articles);
-        map.addAttribute("paginationBarNumbers", barNumbers);
-
+        map.addAttribute("articles", articleService.searchArticles(searchType, searchValue, pageable).map(ArticleResponse::from));
         return "articles/index";
     }
 
     @GetMapping("/{articleId}")
     public String article(@PathVariable Long articleId, ModelMap map) {
-        ArticleWithCommentResponse article = ArticleWithCommentResponse.from(articleService.getArticle(articleId));
-
-        map.addAttribute("article", "article");
-        map.addAttribute("articleComments", article.articleCommentResponses());
-        map.addAttribute("totalCount", articleService.getArticleCount());
+        ArticleWithCommentsResponse article = ArticleWithCommentsResponse.from(articleService.getArticle(articleId));
+        map.addAttribute("article", article);
+        map.addAttribute("articleComments", article.articleCommentsResponses());
 
         return "articles/detail";
     }
