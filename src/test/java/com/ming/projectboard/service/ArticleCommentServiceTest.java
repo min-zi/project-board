@@ -169,10 +169,10 @@ class ArticleCommentServiceTest {
 
     private UserAccount createUserAccount() {
         return UserAccount.of(
-                "uno",
+                "mim",
                 "password",
-                "uno@email.com",
-                "Uno",
+                "mim@email.com",
+                "MIM",
                 null
         );
     }
