@@ -37,6 +37,7 @@ class ArticleControllerTest {
 
     private final MockMvc mvc; // 클라이언트의 요청을 테스트할 컨트롤러로 전달하는 역할을 함
 
+
     @MockBean private ArticleService articleService;
     @MockBean private PaginationService paginationService;
 
@@ -58,7 +59,7 @@ class ArticleControllerTest {
                 .andExpect(view().name("articles/index"))
                 .andExpect(model().attributeExists("articles"))
                 .andExpect(model().attributeExists("paginationBarNumbers"));
-        then(articleService).should().searchArticles(eq(null), eq(null), any(Pageable.class));
+        then(articleService).should().searchArticles(eq(null), eq(null), any(Pageable.class)); // should : 1회 호출
         then(paginationService).should().getPaginationBarNumbers(anyInt(), anyInt());
     }
 
@@ -91,7 +92,7 @@ class ArticleControllerTest {
         then(paginationService).should().getPaginationBarNumbers(pageable.getPageNumber(), Page.empty().getTotalPages());
     }
 
-    @DisplayName("[view][GET] 게시글 상세 페이지 - 정상 호출")
+    @DisplayName("[view][GET] 게시글 페이지 - 정상 호출")
     @Test
     public void givenNothing_whenRequestingArticleView_thenReturnsArticleView() throws Exception {
         // Given
@@ -158,7 +159,7 @@ class ArticleControllerTest {
         return UserAccountDto.of(1L,
                 "minzi",
                 "pw",
-                "ming@mail.com",
+                "minzi@mail.com",
                 "ming",
                 "memo",
                 LocalDateTime.now(),

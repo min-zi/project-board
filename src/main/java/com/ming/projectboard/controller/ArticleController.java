@@ -2,7 +2,7 @@ package com.ming.projectboard.controller;
 
 import com.ming.projectboard.domain.type.SearchType;
 import com.ming.projectboard.dto.response.ArticleResponse;
-import com.ming.projectboard.dto.response.ArticleWithCommentResponse;
+import com.ming.projectboard.dto.response.ArticleWithCommentsResponse;
 import com.ming.projectboard.service.ArticleService;
 import com.ming.projectboard.service.PaginationService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+
+
 
 @RequiredArgsConstructor
 @RequestMapping("/articles")
@@ -45,12 +47,13 @@ public class ArticleController {
 
     @GetMapping("/{articleId}")
     public String article(@PathVariable Long articleId, ModelMap map) {
-        ArticleWithCommentResponse article = ArticleWithCommentResponse.from(articleService.getArticle(articleId));
+        ArticleWithCommentsResponse article = ArticleWithCommentsResponse.from(articleService.getArticle(articleId));
 
-        map.addAttribute("article", "article");
-        map.addAttribute("articleComments", article.articleCommentResponses());
+        map.addAttribute("article", article);
+        map.addAttribute("articleComments", article.articleCommentsResponses());
         map.addAttribute("totalCount", articleService.getArticleCount());
 
         return "articles/detail";
     }
+
 }
