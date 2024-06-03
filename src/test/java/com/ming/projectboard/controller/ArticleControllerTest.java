@@ -102,7 +102,7 @@ class ArticleControllerTest {
         given(articleService.getArticleCount()).willReturn(totalCount);
 
         // When & Then
-        mvc.perform(get("/articles/" + articleId))
+        mvc.perform(get("/articles" + articleId))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
                 .andExpect(view().name("articles/detail"))
