@@ -1,6 +1,7 @@
 package com.ming.projectboard.controller;
 
 import com.ming.projectboard.config.SecurityConfig;
+import com.ming.projectboard.domain.type.SearchType;
 import com.ming.projectboard.dto.ArticleWithCommentsDto;
 import com.ming.projectboard.dto.UserAccountDto;
 import com.ming.projectboard.service.ArticleService;
@@ -98,6 +99,7 @@ class ArticleControllerTest {
         Long articleId = 1L;
         long totalCount = 1L;
         given(articleService.getArticle(articleId)).willReturn(createArticleWithCommentsDto());
+        given(articleService.getArticleCount()).willReturn(totalCount);
 
         // When & Then
         mvc.perform(get("/articles/" + articleId))
