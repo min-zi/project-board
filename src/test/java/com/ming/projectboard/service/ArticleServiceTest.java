@@ -2,7 +2,7 @@ package com.ming.projectboard.service;
 
 import com.ming.projectboard.domain.Article;
 import com.ming.projectboard.domain.UserAccount;
-import com.ming.projectboard.domain.type.SearchType;
+import com.ming.projectboard.domain.constant.SearchType;
 import com.ming.projectboard.dto.ArticleDto;
 import com.ming.projectboard.dto.ArticleWithCommentsDto;
 import com.ming.projectboard.dto.UserAccountDto;
@@ -115,7 +115,7 @@ class ArticleServiceTest {
         then(articleRepository).should().findById(articleId);
     }
 
-    @DisplayName("없는 게시글을 조회하면, 예외를 던진다.")
+    @DisplayName("게시글을 없으면, 예외를 던진다.")
     @Test
     void givenNonexistentArticleId_whenSearchingArticle_thenThrowsException() {
         // Given
@@ -260,7 +260,6 @@ class ArticleServiceTest {
 
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
-                1L,
                 "minzi",
                 "password",
                 "minzi@mail.com",

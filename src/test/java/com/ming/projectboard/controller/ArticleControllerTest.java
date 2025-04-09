@@ -1,7 +1,7 @@
 package com.ming.projectboard.controller;
 
 import com.ming.projectboard.config.SecurityConfig;
-import com.ming.projectboard.domain.type.SearchType;
+import com.ming.projectboard.domain.constant.SearchType;
 import com.ming.projectboard.dto.ArticleWithCommentsDto;
 import com.ming.projectboard.dto.UserAccountDto;
 import com.ming.projectboard.service.ArticleService;
@@ -217,7 +217,7 @@ class ArticleControllerTest {
     }
 
     private UserAccountDto createUserAccountDto() {
-        return UserAccountDto.of(1L,
+        return UserAccountDto.of(
                 "minzi",
                 "pw",
                 "minzi@mail.com",
